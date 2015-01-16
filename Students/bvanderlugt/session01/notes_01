@@ -1,0 +1,61 @@
+
+Class 01
+---
+1/08/14
+---
+
+*Questions*
+-Office hours? A: Sat morning via interwebz
+-Reviewing HW material
+
+type(size) means "what is the type of the value currently held in 
+variable 'size'"
+
+Keywords = special reserved words
+Built-in function =  just a function that has been defined 
+'out of the box'
+-print is weird...a keyword in python2 and a built-in variable in 
+python
+
+Object Oriented Programming
+-"interveiw q": what is oop?
+- the shitt answer is: "inherited polymorphism"
+-the thing that makes it valuable? objects gibe you virtual entities that you 
+can abstract like real objects
+- the car example: car object, and driver object. You can model meaningful
+intuitive objects of the real world. tired driver, shitty stopping car 
+- interesting aspects come from "emergent" interactions...the relationship
+between objects revealing relationships
+
+---
+
+Base off question: "How to determine when your objects are 
+scoped appropriately"
+---
+
+**hueristic** rule of thumb for breaking up code:
+
+*single responsibility principle*: A unit of code should do one thing and 
+do it well...a function, should do one thing and do it well...a package,
+should do one thing, and do it well...
+ex. a method: "render and print" -- bad, do one thing
+good -- "render" and then "print" 
+
+---
+
+encapsulation = a method that keeps you from messing with things you 
+shouldn't mess with
+
+method is bound to an object
+function is a block a code you can call that returns a value
+
+dir(something) = how you figure out the methods associated with anything
+
+double underscore thing double underscore =  special methods for contexts
+
+---
+
+Housekeeping
+---
+
+
