@@ -32,21 +32,21 @@ def numValidator( input, handler ):
 
     try:
         input = int( input )
-        
+
         if isinstance( input, int ):
             return input
     except:
         pass
 
     try:
-        input = round( input )
+        input = int( round( float( input ) ) )
 
         if isinstance( input, float ):
             return round( input )
     except:
         pass
 
-    print("Sorry dude, needs to be a number. Type 'exit' to exit.")
+    print("Sorry dude, needs to be a number. (Type 'exit' to exit.)")
     handler( True )
 
 def continuer():
@@ -74,8 +74,8 @@ def partOne():
 
     continuer()
 
-def partTwo():
-    num = raw_input( "How many rows would you like?" )
+def partTwo( randomCrud = False ):
+    num = raw_input( "How many rows would you like? " )
 
     num = numValidator( num, partTwo )
 
@@ -88,7 +88,7 @@ def partTwo():
 
     continuer()
 
-def partThree():
+def partThree( randomCrud = False ):
     cols = raw_input("How many columns do you want? ")
     cols = numValidator(cols, partThree)
 
@@ -98,7 +98,7 @@ def partThree():
     cap = " - - - - +"
     body = "         |"
 
-    output = rows* ( "+" + cols * cap + "\n" + 4 * ( "|" + body * cols + "\n" ) ) + "+" + cols * cap
+    output = rows * ( "+" + cols * cap + "\n" + 4 * ( "|" + body * cols + "\n" ) ) + "+" + cols * cap
 
     print output
 
