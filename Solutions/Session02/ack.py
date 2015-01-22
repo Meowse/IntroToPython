@@ -1,51 +1,34 @@
-#!/usr/bin/env python
-"""
-Solution to the Ackerman function problem.
+def ackermanFunc(m, n):
 
-The Ackerman function is recusively defines as:
+    """Take two numbers, m and n and run the Ackerman Function on them."""
 
-A(m, n) =
-    n+1   if  m = 0
-    A(m-1, 1)  if  m > 0 and n = 0
-    A(m-1, A(m, n-1))  if m > 0 and n > 0
-See http://en.wikipedia.org/wiki/Ackermann_function.
-"""
-
-
-def ack(m, n):
-    """Compute the Ackerman function"""
+    """First validate that they're both positive."""
     if m < 0 or n < 0:
         return None
+
+    """Run the function"""
     if m == 0:
-        return n+1
-    elif n == 0:
-        return ack(m-1, 1)
+        n+1
+    elif m > 0 and n == 0:
+        m = m - 1
+        ackermanFunc(m, 1)
     else:
-        return ack(m-1, ack(m, n-1))
+        mMin = m - 1
+        nMin = n - 1
+        newN = ackermanFunc(m, nMin)
+        ackermanFunc(mMin, newN)
 
-if __name__ == "__main__":
+    return (m, n)
 
-    # tests from the table in wikipedia
-    # you don't really need to test them all
-    # they will get called as part of the recusive calls anyway...
+if __name__ == '__main__':
 
-    assert ack(0,0) == 1
-    assert ack(0,4) == 5
+    assert ackermanFunc(0,0) == 1
+    assert ackermanFunc(1,1) == 3
+    assert ackermanFunc(2,2) == 7
+    assert ackermanFunc(3,3) == 61
+    assert ackermanFunc(4,4) == 125
 
-    assert ack(1,2) == 4
-    assert ack(1,4) == 6
+    assert ackermanFunc(-1, 0) == None
+    assert ackermanFunc(2, -1) == None
 
-    assert ack(2,2) == 7
-    assert ack(2,4) == 11
-
-    assert ack(3,2) == 29
-    assert ack(3,4) == 125
-
-    ## ack(4,*) exceeds the recursion limit.
-
-    # check for neagative inputs -- should return None.
-    assert ack(-1, 0) is None
-    assert ack(2, -1) is None
-
-
-    print "tests passed"
+    print "All Tests Pass"
