@@ -40,6 +40,8 @@ Here is how to do a copy otherthing = thing[:]
 
 ** HW Notes **
 
+**Looking at mutable sequence types**
+
 why does:
 
 s = "a really cool string"
@@ -57,6 +59,10 @@ from think python: A string is a sequence of characters. You can access the char
 bracket operator:
 sequence === iterable (?) I think this is right
 
+Also on strings, they are immutable, but, you can copy a string
+to change a specific element.
+
 *Errors-- Syntax Error: EOL while scanning string*
 On this one I missed a qoutation mark on the string
 
+* I am breaking at the method index of the day, shits weird*
