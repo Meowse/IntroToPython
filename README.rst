@@ -13,3 +13,4 @@ Class lecture materials are available in a rendered version from:
 
 http://UWPCE-PythonCert.github.io/IntroToPython
 
+Change for the sake of change (to verify that students can pull in changes from my repository)
