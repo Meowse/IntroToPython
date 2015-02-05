@@ -1,69 +1,107 @@
-#!/usr/bin/env python
+import sys
+import time
 
-"""
-Chris' solution to the week 1 homework problem.
+def allCaller( sleep = False ):
 
-Note that we only did the basics of loops, and you can
-do all this without any loops at all, so that's what I did.
+    if sleep:
+        time.sleep(1)
 
-Note also that there is more than one way to skin a cat --
-   or code a function
-"""
+    probPart = raw_input("Which part of the problem do you want? (Type 'exit' to exit) ")
 
+    probPart = numValidator(probPart, allCaller)
 
-def print_grid(size):
-    """
-    print a 2x2 grid with a total size of size
+    if probPart == 1:
+        partOne()
+        return None
 
-    :param size: total size of grid -- it will be rounded if not one more than
-        a multiple of 2
-    """
-    number = 2
-    box_size = int((size-1) // 2)  # size of one grid box
-    print "box_size:", box_size
-    # top row
-    top = ('+ ' + '- ' * box_size) * number + '+' + '\n'
-    middle = ('| ' + ' ' * 2 * box_size) * number + '|' + '\n'
+    if probPart == 2:
+        partTwo()
+        return None
 
-    row = top + middle*box_size
+    if probPart == 3:
+        partThree()
 
-    grid = row*number + top
+    if probPart > 3:
+        print "The problem didn't have " + str( probPart ) + " parts!"
+        allCaller( True )
 
-    print grid
+def numValidator( input, handler ):
 
+    if input == 'exit':
+        exiter()
 
-def print_grid2(number, size):
-    """
-    print a number x number grid with each box of size width and height
+    try:
+        input = int( input )
 
-    :param number: number of grid boxes (row and column)
+        if isinstance( input, int ):
+            return input
+    except:
+        pass
 
-    :param size: size of each grid box
-    """
-    # top row
-    top = ('+ ' + '- '*size)*number + '+' + '\n'
-    middle = ('| ' + ' '*2*size)*number + '|' + '\n'
+    try:
+        input = int( round( float( input ) ) )
 
-    row = top + middle*size
+        if isinstance( input, float ):
+            return round( input )
+    except:
+        pass
 
-    grid = row*number + top
+    print("Sorry dude, needs to be a number. (Type 'exit' to exit.)")
+    handler( True )
 
-    print grid
+def continuer():
+    time.sleep(0.5)
+    continuerVar = raw_input("Would you like to continue? (y/n) ")
 
+    if continuerVar == "y" or continuerVar == "Y":
+        allCaller()
+    elif continuerVar == "n" or continuerVar == "N":
+        exiter()
+    else:
+        print "Please input either 'y' or 'n'!"
+        continuer()
 
-def print_grid3(size):
-    """
-    same as print_grid, but calling print_grid2 to do the work
-    """
-    number = 2
-    box_size = (size-1) / 2  # size of one grid box
-    print_grid2(number, box_size)
+def exiter():
+    sys.exit("Thanks for making grids with me.")
 
+def partOne():
+    lineOne = "+ - - - - + - - - - +\n"
+    lineTwo = "|         |         |\n"
 
-print_grid(11)
-print_grid(7)
+    output = lineOne +  lineTwo *  4 + lineOne + lineTwo * 4 + lineOne
 
-print_grid2(3, 3)
-print_grid2(3, 5)
+    print output
 
-print_grid3(11)
+    continuer()
+
+def partTwo( randomCrud = False ):
+    num = raw_input( "How many rows would you like? " )
+
+    num = numValidator( num, partTwo )
+
+    lineOne = "+ - - - - + - - - - +\n"
+    lineTwo = "|         |         |\n"
+
+    output = num * ( lineOne + 4* lineTwo ) +lineOne
+
+    print output
+
+    continuer()
+
+def partThree( randomCrud = False ):
+    cols = raw_input("How many columns do you want? ")
+    cols = numValidator(cols, partThree)
+
+    rows = raw_input("And how many rows? ")
+    rows = numValidator(rows, partThree)
+
+    cap = " - - - - +"
+    body = "         |"
+
+    output = rows * ( "+" + cols * cap + "\n" + 4 * ( "|" + body * cols + "\n" ) ) + "+" + cols * cap
+
+    print output
+
+    continuer()
+
+allCaller()
