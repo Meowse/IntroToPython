@@ -1,0 +1,39 @@
+1.a) 
+-4 = "Its negative"
+-3 = "Its negative"
+-1 = "Its negative"
+0 = "Zero or less"
+1 = "Zero or more"
+3 = "Zero or more"
+4 = "Even number"
+
+1.b)
+Returns Odd number regardless of what gets to that return (bug), and no numbe
+will ever reach that return.
+
+2.a)
+range(100, 0, -7)
+
+3.a)
+Line(a) always
+Line(b) run if line(a) does not return error
+Line(c) run if line(a) and line(b) do not return errors
+Line(d) if line(a), line(b) or line(c) return errors.
+Line(e) same as d (# exception will jump out of this funciton to the nearest exception block)
+Line(f) always (# if error here is jumps to the next enclosing try-except)
+Line(g) if not errors in the first three lines b/c no error in line 3
+
+# line(g) Never! gets ran in this code. If exception in 1-3 go to exception 
+# if line e runs, then return
+# if first three run, hit return in line(c)
+# if expection in 1-3, exception in line(e) exception jumps to higher
+# 
+
+# note if getvalue() has error line 3 will not return, but either way
+# we are going to exception
+
+3.b)
+Line(a) -> Line(b) -> Line(c) -> Line(f) -> Line(g)
+Line(a) -> Line(d) -> Line(e) -> Line(f) -> Line(g)
+Line(b) -> Line(d) -> Line(e) -> Line(f) -> Line(g)
+Line(c) -> Line(d) -> Line(e) -> Line(f) -> Line(g)
